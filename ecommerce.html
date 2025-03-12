@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ShopMaster - Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #2C3E50, #4CA1AF);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 50px;
+            transition: background 0.3s ease-in-out;
+        }
+        nav:hover {
+            background: rgba(0, 0, 0, 1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo a {
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #4CA1AF;
+            transition: color 0.3s ease-in-out;
+        }
+        .logo a:hover {
+            color: #fff;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        li {
+            margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #4CA1AF;
+        }
+        .cta-button {
+            background: #4CA1AF;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .cta-button:hover {
+            background: #2C3E50;
+            transform: scale(1.1);
+        }
+
+        /* Hero section animations */
+        #hero {
+            text-align: center;
+            font-size: 35px;
+            padding: 120px 20px;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Category Cards Animation */
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+        .category-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideIn 1s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .category-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Animation */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="c:\Users\Dell\OneDrive\Pictures\WhatsApp Image 2025-03-07 at 17.26.50_19445b2d.jpg" alt="ShopMaster Logo">
+                <a href="shopping.html">ShopMart</a>
+            </div>
+            <ul>
+                <li><a href="ecommerce.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="shopping.html"><i class="fas fa-shopping-bag"></i> Shop</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Welcome to ShopMart</h1>
+        <p>Your one-stop shop for quality products</p>
+        <a href="shopping.html" class="cta-button">Start Shopping</a>
+    </section>
+
+    <section id="categories">
+        <h2 style="text-align: center;">Shop by Categories</h2>
+        <div class="category-list">
+            <div class="category-card">
+                <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0082.jpg">
+                <a href="jewellery.html">Jewellery</a>
+            </div>
+            <div class="category-card">
+                <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0054.jpg" alt="Fashion">
+                <a href="fashion.html">Fashion</a>
+            </div>
+            <div class="category-card">
+                <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0059.jpg">
+                <a href="electronics.html">Electronics</a>
+            </div>
+            <div class="category-card">
+                <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0052.jpg" alt="Sports">
+                <a href="sports.html">Fitness and Sports</a>
+            </div>
+            <div class="category-card">
+                <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0031.jpg" alt="Mobile">
+                <a href="mobile.html">Smartphones</a>
+            </div>
+            <div class="category-card">
+                <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0074.jpg" alt="Beauty">
+                <a href="beauty.html">Healthcare</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ShopMaster. All Rights Reserved.</p>
+        <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+   
+
+</head>
+
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <a href="https://www.facebook.com" target="_blank">
+        <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0037.jpg" 
+             alt="Facebook Logo" width="30" height="30">
+        Continue with Facebook
+    </a>
+    <a href="https://www.google.com" target="_blank">
+        <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0062.jpg" 
+             alt="Google Logo" width="30" height="30">
+        Continue with Google
+    </a>
+    <button onclick="login()">Login</button>
+    <a href="forgetpassword.html">Forgot password</a>
+    <p id="message"></p>
+    <a href="register.html">Don't have an account? Register</a>
+    <link rel="stylesheet" href="loginandreg.css">
+
+    <script>
+        function login() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    window.location.href = "ecommerce.html";
+                })
+                .catch((error) => {
+                    document.getElementById("message").innerText = error.message;
+                });
+        }
+    </script>
+    <!-- ✅ Firebase v8 (No Import Statements Needed) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- ✅ Your Firebase Configuration -->
+<script src="firebaseconfig.js"></script>
+
+<!-- ✅ Your Authentication Logic -->
+<script src="auth.js"></script>
+
+    
+</body>
+</html>

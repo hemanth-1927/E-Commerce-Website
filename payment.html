@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Method</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        .payment-option {
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            cursor: pointer;
+            background-color: #fff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .payment-option input {
+            margin-right: 10px;
+        }
+        .payment-option img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .payment-option:hover {
+            background-color: #e0f7fa;
+            transform: scale(1.05);
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function selectOnlyOne(checkbox) {
+            let checkboxes = document.getElementsByName('payment');
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false;
+            });
+        }
+        
+        function proceedToPayment() {
+            let selectedOption = document.querySelector('input[name="payment"]:checked');
+            if (selectedOption) {
+                let paymentMethod = selectedOption.value;
+                let url = "";
+                
+                switch (paymentMethod) {
+                    case "Credit/Debit Card":
+                        url = "cerditcard.html";
+                        break;
+                    case "Paytm":
+                        url = "paytm.html";
+                        break;
+                    case "Google Pay":
+                        url = "googlepay.html";
+                        break;
+                    case "Phone Pay":
+                        url = "phonepay.html";
+                        break;
+                    case "Cash on Delivery":
+                        url = "paymentsuccess.html";
+                        break;
+                    
+                }
+                window.location.href = url;
+
+                
+                
+            } else {
+                alert("Please select a payment method.");
+            }
+            
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Payment Method</h2>
+        
+        <label class="payment-option">
+            <input type="checkbox" name="payment" value="Credit/Debit Card" onclick="selectOnlyOne(this)">
+            <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0066.jpg" alt="Credit Card"> Credit/Debit Card
+        </label>
+        
+        <label class="payment-option">
+            <input type="checkbox" name="payment" value="Paytm" onclick="selectOnlyOne(this)">
+            <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0058.jpg" alt="Paytm"> Paytm
+        </label>
+        
+        <label class="payment-option">
+            <input type="checkbox" name="payment" value="Google Pay" onclick="selectOnlyOne(this)">
+            <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0061.jpg" alt="Google Pay"> Google Pay
+        </label>
+        
+        <label class="payment-option">
+            <input type="checkbox" name="payment" value="Phone Pay" onclick="selectOnlyOne(this)">
+            <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0063.jpg" alt="Phone Pay"> Phone Pay
+        </label>
+        
+        <label class="payment-option">
+            <input type="checkbox" name="payment" value="Cash on Delivery" onclick="selectOnlyOne(this)">
+            <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0060.jpg" alt="Cash on Delivery"> Cash on Delivery
+        </label>
+        
+        <button onclick="proceedToPayment()">Proceed to Payment</button>
+    </div>
+</body>
+</html>

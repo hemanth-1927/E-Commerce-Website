@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Address</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; background-color: #f4f4f4; }
+        .container { width: 60%; padding: 20px; background-color: #fff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); }
+        .saved-addresses { width: 40%; padding: 20px; border-left: 1px solid #ccc; background-color: #fff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); }
+        label { display: block; margin-top: 10px; }
+        input { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
+        button { margin-top: 10px; padding: 10px 30px; background-color: #218838; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        .address-card { padding: 10px; border: 1px solid #ccc; margin-bottom: 10px; border-radius: 5px; cursor: pointer; background-color: #fafafa; transition: 0.3s; }
+        .address-card:hover { background-color: #e9ecef; }
+        .selected { background-color: #d1e7dd; border-color: #218838; }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Add New Address</h2>
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" required>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required>
+        <label for="address">Address:</label>
+        <input type="text" id="address" required>
+        <label for="city">City:</label>
+        <input type="text" id="city" required>
+        <label for="state">State:</label>
+        <input type="text" id="state" required>
+        <label for="pincode">Pin Code:</label>
+        <input type="text" id="pincode" required>
+        <button onclick="saveAddress()">Save Address</button>
+        
+    </div>
+    
+    <div class="saved-addresses">
+        <h2>Saved Addresses</h2>
+        <div id="address-list"></div>
+        <button onclick="proceedToNextPage()">Proceed</button>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="firebaseconfig.js"></script>
+    
+    <script>
+        const db = firebase.firestore();
+        let selectedAddressId = null;
+        
+        function saveAddress() {
+            let fullName = document.getElementById("full-name").value;
+            let phone = document.getElementById("phone").value;
+            let address = document.getElementById("address").value;
+            let city = document.getElementById("city").value;
+            let state = document.getElementById("state").value;
+            let pincode = document.getElementById("pincode").value;
+            
+            if (!fullName || !phone || !address || !city || !state || !pincode) {
+                alert("Please fill in all fields.");
+                return;
+            }
+            
+            db.collection("address").add({
+                fullName, phone, address, city, state, pincode,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                alert("Address saved successfully!");
+                loadAddresses(); // Reload addresses after saving
+            })
+            .catch(error => {
+                console.error("Error adding address: ", error);
+                alert("Error saving address. Please try again.");
+            });
+        }
+        
+        function loadAddresses() {
+            const addressList = document.getElementById("address-list");
+            addressList.innerHTML = "";
+            
+            db.collection("address").orderBy("timestamp", "desc").get().then(snapshot => {
+                snapshot.forEach(doc => {
+                    let data = doc.data();
+                    let div = document.createElement("div");
+                    div.classList.add("address-card");
+                    div.innerHTML = `<strong>${data.fullName}</strong><br>
+                                     ${data.address}, ${data.city}, ${data.state} - ${data.pincode}<br>
+                                     <small>${data.phone}</small>`;
+                    div.onclick = () => selectAddress(doc.id, div);
+                    addressList.appendChild(div);
+                });
+            });
+        }
+        
+        function selectAddress(id, element) {
+            document.querySelectorAll(".address-card").forEach(card => card.classList.remove("selected"));
+            element.classList.add("selected");
+            selectedAddressId = id;
+        }
+        
+        function proceedToNextPage() {
+            if (!selectedAddressId) {
+                alert("Please select an address before proceeding.");
+                return;
+            }
+            window.location.href = "payment.html";
+        }
+        
+        loadAddresses(); // Load addresses on page load
+    </script>
+    
+</body>
+</html>

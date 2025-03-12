@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        // Import Firebase SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, deleteDoc, doc, addDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAckZH7BfMwAvnEH6l2EtL8flTQ6f2QrwY",
+        authDomain: "urproject-6fc8d.firebaseapp.com",
+        projectId: "urproject-6fc8d",
+        storageBucket: "urproject-6fc8d.firebasestorage.app",
+        messagingSenderId: "610178179951",
+        appId: "1:610178179951:web:2e9cee93a4098d53e47e9a",
+        measurementId: "G-YPPXNEFX8T"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Fetch Wishlist Items
+        async function fetchWishlist() {
+            const wishlistContainer = document.getElementById("wishlist");
+            wishlistContainer.innerHTML = "";
+            const querySnapshot = await getDocs(collection(db, "wishlist"));
+            querySnapshot.forEach(doc => {
+                const data = doc.data();
+                wishlistContainer.innerHTML += `
+                    <div class='flex items-center justify-between bg-gray-100 p-3 rounded'>
+                        <div class='flex items-center space-x-3'>
+                            <img src='${data.image}' alt='Product' class='w-12 h-12 rounded'>
+                            <div>
+                                <p class='text-sm font-semibold'>${data.name}</p>
+                                <p class='text-xs text-gray-600'>$${data.price}</p>
+                            </div>
+                        </div>
+                        <div class='flex space-x-2'>
+                            <button class='bg-blue-500 text-white px-3 py-1 rounded' onclick='buyNow("${doc.id}")'>Buy Now</button>
+                            <button class='bg-red-500 text-white px-3 py-1 rounded' onclick='removeFromWishlist("${doc.id}")'>Remove</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // Remove item from wishlist
+        async function removeFromWishlist(id) {
+            await deleteDoc(doc(db, "wishlist", id));
+            fetchWishlist();
+        }
+
+        // Buy Now function
+        async function buyNow(id) {
+            const docRef = doc(db, "wishlist", id);
+            const docSnap = await getDocs(collection(db, "wishlist"));
+            if (docSnap.exists()) {
+                await addDoc(collection(db, "orders"), docSnap.data());
+                await removeFromWishlist(id);
+                alert("Order placed successfully!");
+            }
+        }
+
+        window.onload = fetchWishlist;
+    </script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-2xl mx-auto bg-white shadow-md rounded-lg p-6 mt-6">
+        <h1 class="text-lg font-bold mb-4">My Wishlist</h1>
+        
+        <!-- Wishlist Items -->
+        <div id="wishlist" class="space-y-4">
+            <p class="text-sm text-gray-500">Loading...</p>
+        </div>
+    </div>
+</body>
+</html>

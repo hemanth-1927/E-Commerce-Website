@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce shopping cart</title>
+    <link rel="stylesheet" href="style2.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="c:\Users\Dell\OneDrive\Pictures\WhatsApp Image 2025-03-07 at 17.26.50_19445b2d.jpg" alt="ShopMaster Logo">
+        </div>
+        <h1>ShopMaster</h1>
+        <div id="cart-icon">
+        <i class="ri-shopping-bag-line"></i>
+        <span class="cart-item-count"></span>
+        </div>
+    </header>
+    <div class="cart">
+        <h2 class="cart-title"> Your cart</h2>
+        <div class="cart-content">
+            <!--<div class="cart-box">
+                <img src="C:\Users\User\OneDrive\Desktop\dress.jpeg" class="cart-img">
+                <div class="cart-detail">
+                    <h2 class="cart-product-title"> dress</h2>
+                    <span class="cart-price">999</span>
+                    <div class="cart-quantity">
+                        <button id="decrement">-</button>
+                        <span class="number">1</span>
+                        <button id="increment">+</button>
+                    </div>
+                </div>
+                <i class="ri-delete-bin-line cart-remove"></i>
+            </div> -->
+        </div>
+        <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">0</div>
+        </div>
+        <button class="btn-buy">Buy now</button>
+        <i class="ri-close-line" id="cart-close"></i>
+    </div>
+
+
+
+    <section class="shop">
+        <h1 class="section-title">smartphones</h1>
+        <div class="product-content">
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\WhatsApp Image 2025-03-07 at 19.33.17_43369bcf.jpg">
+                </div>
+                <h2 class="product-title">iphone 16pro max</h2>
+                <p class="product-description">Experience cutting-edge technology with the latest iPhone featuring advanced cameras and lightning-fast performance.</p>
+                <p class="product-specs">RAM: 12GB | Storage: 512GB</p>
+                <div class="price-and-cart">
+                    <span class="price">135900</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0080.jpg">
+                </div>
+                <h2 class="product-title">OnePlus 13r</h2>
+                <p class="product-description">A flagship killer with a smooth display, powerful processor, and fast charging technology.</p>
+                <p class="product-specs">RAM: 16GB | Storage: 256GB</p>
+                <div class="price-and-cart">
+                    <span class="price">42998</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0077.jpg">
+                </div>
+                <h2 class="product-title">Galaxy S25 Ultra</h2>
+                <p class="product-description">Samsung's premium phone with an exceptional camera system and an immersive display.</p>
+                <p class="product-specs">RAM: 12GB | Storage: 1TB</p>
+                <div class="price-and-cart">
+                    <span class="price">141999</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0019.jpg">
+                </div>
+                <h2 class="product-title">iQoo Z9 s</h2>
+                <p class="product-description">An affordable gaming phone with a high refresh rate display and fast performance.</p>
+                <p class="product-specs">RAM: 8GB | Storage: 128GB</p>
+                <div class="price-and-cart">
+                    <span class="price">19999</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0053.jpg">
+                </div>
+                <h2 class="product-title">Redmi A4 5g</h2>
+                <p class="product-description">A budget 5G smartphone with long battery life and solid performance.</p>
+                <p class="product-specs">RAM: 6GB | Storage: 128GB</p>
+                <div class="price-and-cart">
+                    <span class="price">8499</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0079.jpg">
+                </div>
+                <h2 class="product-title">vivo X200 pro</h2>
+                <p class="product-description">A premium smartphone with top-notch cameras and a sleek design.</p>
+                <p class="product-specs">RAM: 12GB | Storage: 512GB</p>
+                <div class="price-and-cart">
+                    <span class="price">87990</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0018.jpg">
+                </div>
+                <h2 class="product-title">POCO x6 Neo 5g</h2>
+                <p class="product-description">An affordable powerhouse offering a great display and excellent battery backup.</p>
+                <p class="product-specs">RAM: 6GB | Storage: 128GB</p>
+                <div class="price-and-cart">
+                    <span class="price">11999</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0078.jpg">
+                </div>
+                <h2 class="product-title">Infinix GT pro</h2>
+                <p class="product-description">A budget-friendly device with solid features for everyday use.</p>
+                <p class="product-specs">RAM: 8GB | Storage: 256GB</p>
+                <div class="price-and-cart">
+                    <span class="price">23894</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- ✅ Firebase Configuration -->
+<script src="firebaseconfig.js"></script>
+<script src="script.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const addCartButtons = document.querySelectorAll(".add-cart");
+
+        addCartButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                let productBox = button.closest(".product-box");
+                let productName = productBox.querySelector(".product-title").innerText;
+                let productPrice = productBox.querySelector(".price").innerText;
+
+                saveToFirestore(productName, productPrice);
+            });
+        });
+
+        function saveToFirestore(name, price) {
+            const db = firebase.firestore();
+
+            db.collection("cart").add({
+                productName: name,
+                productPrice: price,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                alert("Product added to cart successfully!");
+            })
+            .catch(error => {
+                console.error("Error adding product:", error);
+                alert("Failed to add product. Try again.");
+            });
+        }
+    });
+</script>
+</body>
+</html>

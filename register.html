@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <img src="c:\Users\Dell\OneDrive\Pictures\WhatsApp Image 2025-03-07 at 17.26.50_19445b2d.jpg">
+    <h2>Register to ShopMaster</h2>
+    
+    <input type="text" id="name" placeholder="Full Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password (Min 6 chars)" required><br>
+    
+    <input type="number" id="mobile" placeholder="Mobile Number" required><br>
+    
+    
+
+    <a href="https://www.facebook.com" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
+             alt="Facebook Logo" width="30" height="30">
+        Continue with Facebook
+    </a>
+    <a href="https://www.google.com" target="_blank">
+        <img src="c:\Users\Dell\OneDrive\Pictures\e-pic's\IMG-20250307-WA0062.jpg" 
+             alt="Google Logo" width="30" height="30">
+        Continue with Google
+    </a>
+    
+    <button onclick="register()">Register</button>
+    <p id="message"></p>
+    <a href="login.html">Already have an account? Login</a>
+
+    <link rel="stylesheet" href="loginandreg.css">
+
+    <script>
+        function register() {
+            let name = document.getElementById("name").value;
+            let mobile = document.getElementById("mobile").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (!email.includes("@")) {
+                document.getElementById("message").innerText = "Invalid email format!";
+                return;
+            }
+            if (password.length < 6) {
+                document.getElementById("message").innerText = "Password must be at least 6 characters!";
+                return;
+            }
+            if (mobile.length < 10) {
+                document.getElementById("message").innerText = "Number must be 10 digits!";
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    let user = userCredential.user;
+                    db.collection("users").doc(user.uid).set({
+                        name: name,
+                        mobile: mobile,
+                        email: email,
+                        uid: user.uid
+                    });
+                    document.getElementById("message").innerText = "Registration Successful!";
+                })
+                .catch((error) => {
+                    document.getElementById("message").innerText = error.message;
+                });
+        }
+        
+        
+    </script>
+
+    
+
+    <!-- ✅ Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- ✅ Your Firebase Configuration -->
+    <script src="firebaseconfig.js"></script>
+    <script src="auth.js"></script>
+    
+</body>
+</html>
